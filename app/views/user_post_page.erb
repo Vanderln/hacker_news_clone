@@ -1,0 +1,10 @@
+<div class="profile">
+  <h1>Hello <%=user.username%></h1>
+<ul>
+  <%post.each do |submission|%>
+  <li><a href='<%=submission.url%>'><%=submission.title%></a></li>
+</ul>
+<% end %>
+
+
+</div>

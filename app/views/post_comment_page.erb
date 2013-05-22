@@ -1,0 +1,18 @@
+<div class="profile">
+  <h1><a href='<%=post.url%>'><%=post.title%></a></h1>
+<form action='/comments/<%=post.id%>' method="post">
+  <textarea cols="40" rows="5" name="comment" placeholder="Write Comment Here">
+  </textarea>
+  <button type="submit">Submit</button>
+</form>
+<%comment.each do |comment|%> 
+<ul>
+  <li><%=User.find(comment.user_id).username%></li>
+  <li><%=comment.body%></li>
+    <ul>
+      <li><%=((Time.now - comment.created_at)/60).to_i%> minutes ago</li>
+    </ul>
+</ul>
+  <%end%>
+
+</div>

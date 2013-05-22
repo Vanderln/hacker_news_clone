@@ -1,0 +1,25 @@
+<div class="container">
+<h3>Hacker News Clone</h3>
+<div class = "login">
+<a href = "/login" >Login</a>
+<br>
+<a href = "/logout" >Logout</a>
+<br>
+<a href = "/submit" >Submit</a>
+<br>
+<% if session[:user_id]%>
+<label>Signed in as: <%=User.find(session[:user_id]).username%></label>
+<%end%>
+</div>
+<%@post.each do |posts|%>
+<ul>
+<li><a href = "<%=posts.url%>"><%=posts.title %> </a>
+  <ul>
+  <li><a href = "/users/<%=User.find(posts.user_id).id%>"><%=User.find(posts.user_id).username%></a></li>
+  <li><a href = "/comments/<%=posts.id%>"><%=Comment.where(:post_id => posts.id).count%> Comments</a></li>
+</ul>
+</li>
+</ul>
+<br>
+<% end %>
+</div>

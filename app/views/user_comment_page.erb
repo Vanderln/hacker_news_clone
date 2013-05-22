@@ -1,0 +1,11 @@
+<div class="profile">
+  <h1>Hello <%=user.username%></h1>
+<ul>
+  <%comment.each do |submission|%>
+  <li><%=submission.body%></li>
+  <li><a href='<%=Post.where(:id => submission.post_id).first.url%>'>Link</a></li>
+</ul>
+<% end %>
+
+
+</div>
