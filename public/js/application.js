@@ -1,7 +1,17 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $('li#display_votes').hide();
+  $('form.postvote').submit(function(e){
+    e.preventDefault();
+    var action = $(this).attr('action');
+      // console.log(action);
+    
+    // var data = $(this).serialize();
+    $.post(action, function(response){
+      $('li#holder').hide();
+      $('li#display_votes').show().append(response + 'Votes');
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    
+    });
+    
+  });
 });

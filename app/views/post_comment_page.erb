@@ -3,13 +3,15 @@
 <form action='/comments/<%=post.id%>' method="post">
   <textarea cols="40" rows="5" name="comment" placeholder="Write Comment Here">
   </textarea>
-  <button type="submit">Submit</button>
+  <input type="submit" value="Submit new comment">
 </form>
 <%comment.each do |comment|%> 
 <ul>
   <li><%=User.find(comment.user_id).username%></li>
   <li><%=comment.body%></li>
+
     <ul>
+      <li><%=comment.commentvotes.count%> Votes <input type="submit" id="commentvote" value="Vote!"> </li>
       <li><%=((Time.now - comment.created_at)/60).to_i%> minutes ago</li>
     </ul>
 </ul>

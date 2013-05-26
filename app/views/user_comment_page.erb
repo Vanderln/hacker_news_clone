@@ -3,7 +3,7 @@
 <ul>
   <%comment.each do |submission|%>
   <li><%=submission.body%></li>
-  <li><a href='<%=Post.where(:id => submission.post_id).first.url%>'>Link</a></li>
+  <li><a href='<%=Post.where(:id => submission.post_id).first.url%>'>Link</a><input type="submit" id="commentvote" value="Vote!"></li>
 </ul>
 <% end %>
 

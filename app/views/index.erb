@@ -13,12 +13,23 @@
 </div>
 <%@post.each do |posts|%>
 <ul>
-<li><a href = "<%=posts.url%>"><%=posts.title %> </a>
+<li><a href= "<%=posts.url%>"><%=posts.title %> </a>
   <ul>
+    <li id="display_votes"></li>
+    <li id="holder"><%=posts.postvotes.count%> Votes 
+      <form class="postvote" action="/postvote/<%=posts.id%>" method="post">
+        <input type="submit" value="Vote!">
+        <input  name="vote" value="1" type="hidden">
+      </form>
+    </li>
+
+
   <li><a href = "/users/<%=User.find(posts.user_id).id%>"><%=User.find(posts.user_id).username%></a></li>
+
   <li><a href = "/comments/<%=posts.id%>"><%=Comment.where(:post_id => posts.id).count%> Comments</a></li>
+
 </ul>
-</li>
+
 </ul>
 <br>
 <% end %>
